@@ -1,0 +1,4 @@
+Based on rev 26, patched by Roman Shterenzon <romanbsd@yahoo.com>
+in order to use POST instead of GET in order to avoid forming URIs that
+are too long. The read_local_file method was changed so the file doesn't have
+to be writeable (it was a bug).
