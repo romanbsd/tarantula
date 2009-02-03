@@ -23,7 +23,10 @@ class Relevance::Tarantula::W3CValidator
       error_result = result.dup
       error_result.description = "Bad HTML (W3C Validator)"
       error_result.data = results.errors.collect {|e| "Line: #{e.line}, column: #{e.col}, error: #{e.message}"}.join("\n")
-      error_result.data += "\n" + results.warnings.collect {|e| "Line: #{e.line}, column: #{e.col}, warning: #{e.message}"}.join("\n") if @show_warnings
+      if @show_warnings
+        error_result.data << "\n" unless error_result.data.empty?
+        error_result.data << results.warnings.collect {|e| "Line: #{e.line}, column: #{e.col}, warning: #{e.message}"}.join("\n")
+      end
       error_result
     end
   end
