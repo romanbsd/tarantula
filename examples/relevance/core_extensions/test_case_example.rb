@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "../..", "example_helper.rb")
+require File.expand_path(File.join(File.dirname(__FILE__), "../..", "example_helper.rb"))
 require 'relevance/core_extensions/test_case'
 
 describe "TestCase extensions" do
@@ -12,5 +12,9 @@ describe "TestCase extensions" do
     (crawler = mock).expects(:crawl).with("/foo")
     expects(:tarantula_crawler).returns(crawler)
     tarantula_crawl(:integration_test_stub, :url => "/foo")
+  end
+  
+  it "should get mixed into ActionController::IntegrationTest" do
+    ActionController::IntegrationTest.ancestors.should include(Relevance::CoreExtensions::TestCaseExtensions)
   end
 end
