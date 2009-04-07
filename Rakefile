@@ -19,6 +19,9 @@ begin
     s.authors = ["Relevance, Inc."]
     s.require_paths = ["lib"]
     s.files = files.flatten
+    s.add_dependency 'htmlentities'
+    s.add_dependency 'hpricot'
+    s.rubyforge_project = 'thinkrelevance'
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
@@ -46,7 +49,7 @@ namespace :examples do
     t.rcov_opts = %[--exclude "gems/*,/Library/Ruby/*,config/*" --text-summary  --sort coverage --no-validator-links]
   end
   
-  RAILS_VERSIONS = %w[2.0.2 2.1.0 2.1.1 2.2.2 2.3.1]
+  RAILS_VERSIONS = %w[2.0.2 2.1.0 2.1.1 2.2.2 2.3.1 2.3.2]
   
   desc "Run exmaples with multiple versions of rails"
   task :multi_rails do
