@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Relevance, Inc."]
-  s.date = %q{2009-04-07}
+  s.date = %q{2009-04-14}
   s.description = %q{A big hairy fuzzy spider that crawls your site, wreaking havoc}
   s.email = %q{opensource@thinkrelevance.com}
   s.extra_rdoc_files = [
@@ -39,6 +39,7 @@ Gem::Specification.new do |s|
     "examples/relevance/tarantula/result_example.rb",
     "examples/relevance/tarantula/tidy_handler_example.rb",
     "examples/relevance/tarantula/transform_example.rb",
+    "examples/relevance/tarantula/w3c_validator_example.rb",
     "examples/relevance/tarantula_example.rb",
     "laf/images/button_active.png",
     "laf/images/button_hover.png",
@@ -92,8 +93,51 @@ Gem::Specification.new do |s|
     "lib/relevance/tarantula/test_report.html.erb",
     "lib/relevance/tarantula/tidy_handler.rb",
     "lib/relevance/tarantula/transform.rb",
+    "lib/relevance/tarantula/w3c_validator.rb",
     "tasks/tarantula_tasks.rake",
-    "template/tarantula_test.rb"
+    "template/tarantula_test.rb",
+    "vendor/w3c_validators/CHANGELOG",
+    "vendor/w3c_validators/LICENSE",
+    "vendor/w3c_validators/README",
+    "vendor/w3c_validators/README.svn",
+    "vendor/w3c_validators/lib/w3c_validators.rb",
+    "vendor/w3c_validators/lib/w3c_validators/constants.rb",
+    "vendor/w3c_validators/lib/w3c_validators/css_validator.rb",
+    "vendor/w3c_validators/lib/w3c_validators/exceptions.rb",
+    "vendor/w3c_validators/lib/w3c_validators/feed_validator.rb",
+    "vendor/w3c_validators/lib/w3c_validators/markup_validator.rb",
+    "vendor/w3c_validators/lib/w3c_validators/message.rb",
+    "vendor/w3c_validators/lib/w3c_validators/results.rb",
+    "vendor/w3c_validators/lib/w3c_validators/validator.rb",
+    "vendor/w3c_validators/rakefile.rb",
+    "vendor/w3c_validators/test/fixtures/invalid_css.css",
+    "vendor/w3c_validators/test/fixtures/invalid_encoding.html",
+    "vendor/w3c_validators/test/fixtures/invalid_feed.xml",
+    "vendor/w3c_validators/test/fixtures/invalid_html5.html",
+    "vendor/w3c_validators/test/fixtures/invalid_markup.html",
+    "vendor/w3c_validators/test/fixtures/valid_css.css",
+    "vendor/w3c_validators/test/fixtures/valid_feed.xml",
+    "vendor/w3c_validators/test/fixtures/valid_html5.html",
+    "vendor/w3c_validators/test/fixtures/valid_markup.html",
+    "vendor/w3c_validators/test/test_css_validator.rb",
+    "vendor/w3c_validators/test/test_exceptions.rb",
+    "vendor/w3c_validators/test/test_feed_validator.rb",
+    "vendor/w3c_validators/test/test_helper.rb",
+    "vendor/w3c_validators/test/test_html5_validator.rb",
+    "vendor/w3c_validators/test/test_markup_validator.rb",
+    "vendor/xss-shield/MIT-LICENSE",
+    "vendor/xss-shield/README",
+    "vendor/xss-shield/init.rb",
+    "vendor/xss-shield/lib/xss_shield.rb",
+    "vendor/xss-shield/lib/xss_shield/erb_hacks.rb",
+    "vendor/xss-shield/lib/xss_shield/haml_hacks.rb",
+    "vendor/xss-shield/lib/xss_shield/safe_string.rb",
+    "vendor/xss-shield/lib/xss_shield/secure_helpers.rb",
+    "vendor/xss-shield/test/test_actionview_integration.rb",
+    "vendor/xss-shield/test/test_erb.rb",
+    "vendor/xss-shield/test/test_haml.rb",
+    "vendor/xss-shield/test/test_helpers.rb",
+    "vendor/xss-shield/test/test_safe_string.rb"
   ]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/relevance/tarantula}
@@ -103,28 +147,29 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{A big hairy fuzzy spider that crawls your site, wreaking havoc}
   s.test_files = [
-    "examples/example_helper.rb",
     "examples/relevance/core_extensions/ellipsize_example.rb",
+    "examples/relevance/core_extensions/test_case_example.rb",
     "examples/relevance/core_extensions/file_example.rb",
     "examples/relevance/core_extensions/response_example.rb",
-    "examples/relevance/core_extensions/test_case_example.rb",
+    "examples/relevance/tarantula_example.rb",
+    "examples/relevance/tarantula/crawler_example.rb",
+    "examples/relevance/tarantula/link_example.rb",
+    "examples/relevance/tarantula/html_document_handler_example.rb",
+    "examples/relevance/tarantula/w3c_validator_example.rb",
+    "examples/relevance/tarantula/log_grabber_example.rb",
+    "examples/relevance/tarantula/form_submission_example.rb",
     "examples/relevance/tarantula/attack_form_submission_example.rb",
     "examples/relevance/tarantula/attack_handler_example.rb",
-    "examples/relevance/tarantula/crawler_example.rb",
-    "examples/relevance/tarantula/form_example.rb",
-    "examples/relevance/tarantula/form_submission_example.rb",
-    "examples/relevance/tarantula/html_document_handler_example.rb",
-    "examples/relevance/tarantula/html_report_helper_example.rb",
-    "examples/relevance/tarantula/html_reporter_example.rb",
-    "examples/relevance/tarantula/invalid_html_handler_example.rb",
-    "examples/relevance/tarantula/io_reporter_example.rb",
-    "examples/relevance/tarantula/link_example.rb",
-    "examples/relevance/tarantula/log_grabber_example.rb",
     "examples/relevance/tarantula/rails_integration_proxy_example.rb",
-    "examples/relevance/tarantula/result_example.rb",
+    "examples/relevance/tarantula/io_reporter_example.rb",
+    "examples/relevance/tarantula/form_example.rb",
+    "examples/relevance/tarantula/html_reporter_example.rb",
+    "examples/relevance/tarantula/html_report_helper_example.rb",
     "examples/relevance/tarantula/tidy_handler_example.rb",
     "examples/relevance/tarantula/transform_example.rb",
-    "examples/relevance/tarantula_example.rb"
+    "examples/relevance/tarantula/result_example.rb",
+    "examples/relevance/tarantula/invalid_html_handler_example.rb",
+    "examples/example_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
